@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f3">
+  <meta name="description" content="Claire Lee's portfolio: projects and research across education technology, public service, and national security.">
+  <meta property="og:title" content="Claire Lee — Portfolio">
+  <meta property="og:description" content="A gallery of ideas, research, and things built at the intersection of technology and public life.">
+  <meta property="og:type" content="website">
+  <title>Claire Lee — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wall: #f7f7f3;
+      --white: #fffefa;
+      --ink: #202221;
+      --muted: #777a76;
+      --line: #d9dad4;
+      --soft-line: #e9e9e4;
+      --green: #526d43;
+      --blue: #9fbdd4;
+      --orange: #d77e50;
+      --yellow: #e6cd72;
+      --sans: 'DM Sans', Arial, sans-serif;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --mono: 'IBM Plex Mono', 'Courier New', monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--wall); color: var(--ink); font-family: var(--sans); line-height: 1.55; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, .gallery-track:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+    .page { width: min(1440px, calc(100% - 80px)); margin: 0 auto; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; height: 75px; border-bottom: 1px solid var(--line); }
+    .wordmark { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: -.02em; text-decoration: none; }
+    .mark { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; color: var(--white); background: var(--green); font: 15px var(--serif); }
+    .top-meta { display: flex; align-items: center; gap: 25px; font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .top-meta .online { display: flex; align-items: center; gap: 7px; }
+    .online::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    .top-meta a { text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 3px; }
+    .intro { padding: 62px 0 42px; }
+    .intro-kicker { margin: 0 0 18px; font: 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
+    h1 { margin: 0 0 17px; font: 500 clamp(41px, 6vw, 72px)/1.02 var(--serif); letter-spacing: -.045em; }
+    .intro-line { max-width: 1000px; margin: 0; font: italic clamp(18px, 2.1vw, 25px)/1.45 var(--serif); color: #454a46; }
+    .intro-meta { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-top: 19px; color: #656a66; font: 12px/1.8 var(--mono); }
+    .intro-meta span::before { content: '↳ '; color: var(--orange); }
+    .gallery-header { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding: 15px 0 13px; border-bottom: 1px solid var(--line); }
+    .gallery-title { margin: 0; font: 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .gallery-tools { display: flex; align-items: center; gap: 15px; }
+    .gallery-hint { color: var(--muted); font: 10px var(--mono); letter-spacing: .04em; }
+    .arrows { display: flex; gap: 6px; }
+    .arrow-btn { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); font: 16px var(--sans); cursor: pointer; transition: background .18s, border-color .18s; }
+    .arrow-btn:hover { background: var(--white); border-color: #aeb2aa; }
+    .gallery-window { overflow: hidden; margin-right: calc((100vw - min(1440px, 100vw - 80px)) / -2); padding: 22px 0 32px; }
+    .gallery-track { display: flex; align-items: flex-start; gap: 28px; overflow-x: auto; padding: 0 max(40px, calc((100vw - 1440px) / 2)) 12px 0; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #c6c9c1 transparent; overscroll-behavior-x: contain; }
+    .gallery-track::-webkit-scrollbar { height: 5px; }
+    .gallery-track::-webkit-scrollbar-thumb { border-radius: 8px; background: #c6c9c1; }
+    .artwork { flex: 0 0 min(520px, 48vw); min-width: 340px; margin: 0; scroll-snap-align: start; }
+    .art-label { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 0 2px 10px; }
+    .art-category { margin: 0; font: 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: #656b66; }
+    .art-number { color: #9a9c96; font: 10px var(--mono); }
+    .art-frame { height: clamp(260px, 29vw, 375px); position: relative; overflow: hidden; border: 1px solid #d3d5ce; background: #eeeee8; }
+    .marathon-image { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 29%; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+    .artwork:hover .marathon-image { transform: scale(1.035); }
+    .image-link { position: absolute; inset: 0; z-index: 2; }
+    .art-overlay { position: absolute; right: 12px; bottom: 12px; z-index: 1; padding: 6px 9px; border: 1px solid rgba(255,255,255,.65); background: rgba(255,254,250,.88); font: 9px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .artwork figcaption { display: flex; align-items: start; justify-content: space-between; gap: 18px; padding: 13px 2px 0; }
+    .caption-title { margin: 0; font: 23px/1.15 var(--serif); }
+    .caption-copy { max-width: 210px; margin: 2px 0 0; text-align: right; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .abstract-art { width: 100%; height: 100%; position: relative; overflow: hidden; display: grid; place-items: center; }
+    .gov-art { background: #e8edf0; }
+    .gov-art::before { content: ''; position: absolute; width: 68%; height: 67%; border: 1px solid rgba(38,62,74,.23); background: linear-gradient(90deg, transparent 49.8%, rgba(38,62,74,.16) 50%, transparent 50.2%), linear-gradient(0deg, transparent 49.8%, rgba(38,62,74,.16) 50%, transparent 50.2%); background-size: 34px 34px; transform: rotate(-8deg); }
+    .gov-paper { z-index: 1; width: 53%; height: 69%; padding: 21px 19px; background: #fbfaf5; box-shadow: 0 18px 44px rgba(38,62,74,.12); transform: rotate(3deg); }
+    .gov-paper .paper-top { display: flex; justify-content: space-between; color: #78848b; font: 8px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .gov-rule { height: 1px; margin: 12px 0; background: #d8dcd9; }
+    .gov-paper h3 { max-width: 240px; margin: 18px 0 12px; color: #263e4a; font: 24px/1.03 var(--serif); }
+    .gov-lines { display: grid; gap: 6px; }
+    .gov-lines i { display: block; width: 100%; height: 3px; background: #dfe2de; }
+    .gov-lines i:nth-child(2) { width: 84%; }.gov-lines i:nth-child(3) { width: 67%; }
+    .gov-stamp { position: absolute; right: -8px; bottom: 4px; width: 64px; height: 64px; display: grid; place-items: center; border: 1px solid var(--orange); border-radius: 50%; color: var(--orange); font: 8px var(--mono); text-align: center; transform: rotate(13deg); }
+    .defense-art { background: #252e30; }
+    .defense-grid { position: absolute; inset: 0; opacity: .23; background-image: linear-gradient(rgba(218,224,200,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(218,224,200,.22) 1px, transparent 1px); background-size: 28px 28px; mask-image: radial-gradient(ellipse at center, black, transparent 82%); }
+    .radar { position: relative; width: 245px; aspect-ratio: 1; border: 1px solid rgba(212,223,156,.55); border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0 30px, rgba(212,223,156,.22) 31px 32px); }
+    .radar::before, .radar::after { content: ''; position: absolute; left: 50%; top: 50%; width: 1px; height: 100%; background: rgba(212,223,156,.38); transform: translate(-50%,-50%); }
+    .radar::after { transform: translate(-50%,-50%) rotate(90deg); }
+    .radar-sweep { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from -28deg, transparent 0 314deg, rgba(112,156,122,.38) 360deg); }
+    .radar-dot { position: absolute; z-index: 2; width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 16px rgba(230,205,114,.8); }
+    .radar-dot.one { top: 31%; left: 65%; }.radar-dot.two { top: 62%; left: 36%; background: var(--blue); box-shadow: 0 0 16px rgba(159,189,212,.8); }.radar-dot.three { right: 22%; bottom: 24%; background: var(--orange); }
+    .defense-label { position: absolute; left: 16px; bottom: 14px; color: #d8dfce; font: 9px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .info { display: grid; grid-template-columns: minmax(185px, .42fr) 1fr; gap: 70px; padding: 56px 0 68px; border-top: 1px solid var(--line); }
+    .info-aside { position: sticky; top: 25px; align-self: start; }
+    .info-aside h2 { margin: 0 0 15px; font: 500 12px var(--mono); letter-spacing: .17em; text-transform: uppercase; }
+    .info-aside p { max-width: 260px; margin: 0; color: var(--muted); font: 11px/1.9 var(--mono); }
+    .info-content { border-top: 1px solid var(--line); }
+    .info-group { padding: 23px 0 26px; border-bottom: 1px solid var(--line); }
+    .info-group h3 { margin: 0 0 19px; color: var(--muted); font: 10px var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    .entry { margin: 0 0 20px; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry-title { margin: 0; font: 15px/1.4 var(--mono); }
+    .entry-sub { margin: 3px 0 0; color: #515652; font: italic 13px/1.55 var(--sans); }
+    .entry-date { margin: 2px 0 0; color: #969993; font: 12px var(--mono); }
+    .education-line { margin: 0 0 13px; font: 13px/1.6 var(--mono); }
+    .education-line:last-child { margin-bottom: 0; }
+    .education-line span { display: block; color: #888c86; font: 12px/1.6 var(--sans); }
+    .writing-link { display: block; max-width: 720px; margin: 0 0 16px; font: 14px/1.55 var(--mono); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .writing-link:last-child { margin-bottom: 0; }
+    .writing-note { margin: 4px 0 0; color: #888c86; font: 12px/1.6 var(--sans); }
+    .contact { display: flex; align-items: end; justify-content: space-between; gap: 30px; padding: 34px 0 43px; border-top: 1px solid var(--line); }
+    .contact-label { margin: 0 0 9px; color: var(--muted); font: 10px var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    .contact h2 { margin: 0; font: 500 clamp(28px, 4vw, 43px)/1.1 var(--serif); }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; font: 12px var(--mono); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0 21px; border-top: 1px solid var(--line); color: #898d87; font: 9px var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+    .footer a { color: var(--ink); text-decoration: none; }
+    @media (min-width: 1500px) { .gallery-track { padding-left: max(40px, calc((100vw - 1440px) / 2)); } }
+    @media (max-width: 760px) {
+      .page { width: calc(100% - 40px); }
+      .intro { padding: 48px 0 33px; }
+      .gallery-window { margin-right: -20px; }
+      .gallery-track { gap: 18px; padding-right: 20px; }
+      .artwork { flex-basis: 78vw; min-width: 285px; }
+      .art-frame { height: 58vw; min-height: 245px; max-height: 345px; }
+      .info { grid-template-columns: 1fr; gap: 23px; padding: 44px 0 52px; }
+      .info-aside { position: static; }
+      .info-aside p { max-width: 480px; }
+    }
+    @media (max-width: 480px) {
+      .page { width: calc(100% - 32px); }
+      .topbar { height: 65px; }
+      .top-meta { gap: 11px; font-size: 9px; }
+      .top-meta .online { display: none; }
+      .intro { padding: 41px 0 28px; }
+      h1 { font-size: 43px; }
+      .intro-line { font-size: 18px; }
+      .intro-meta { display: grid; gap: 3px; font-size: 10px; }
+      .gallery-hint { display: none; }
+      .gallery-window { margin-right: -16px; }
+      .gallery-track { padding-right: 16px; }
+      .artwork { flex-basis: 84vw; min-width: 265px; }
+      .art-frame { height: 66vw; min-height: 225px; }
+      .caption-title { font-size: 20px; }
+      .caption-copy { max-width: 145px; font-size: 10px; }
+      .gov-paper { width: 62%; height: 72%; padding: 17px 14px; }
+      .gov-paper h3 { font-size: 20px; }
+      .radar { width: 205px; }
+      .contact { align-items: start; flex-direction: column; padding: 29px 0 35px; }
+      .footer { font-size: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page topbar" id="top">
+    <a class="wordmark" href="#top"><span class="mark">C</span><span>CLAIRE LEE</span></a>
+    <div class="top-meta"><span class="online">Washington, DC</span><a href="#information">Information</a><a href="mailto:lee3claire@gmail.com">Contact ↗</a></div>
+  </header>
+
+  <main>
+    <section class="page intro" aria-labelledby="intro-title">
+      <p class="intro-kicker">Portfolio · 2026</p>
+      <h1 id="intro-title">Claire Lee’s Portfolio</h1>
+      <p class="intro-line">How can technology improve America’s government, defense, and education? Exploring the art of the possible with creativity and care.</p>
+      <div class="intro-meta"><span>BA: Political Science & Economics · Pepperdine</span><span>MA: Middle East Policy Studies · Pepperdine</span><span>Washington, DC · LA native</span></div>
+    </section>
+
+    <section class="page gallery" aria-labelledby="gallery-heading">
+      <div class="gallery-header">
+        <h2 class="gallery-title" id="gallery-heading">Selected work / 01—03</h2>
+        <div class="gallery-tools"><span class="gallery-hint">Scroll to explore the collection</span><div class="arrows"><button class="arrow-btn" id="prev" type="button" aria-label="Scroll gallery left">←</button><button class="arrow-btn" id="next" type="button" aria-label="Scroll gallery right">→</button></div></div>
+      </div>
+      <div class="gallery-window">
+        <div class="gallery-track" id="gallery-track" tabindex="0" role="region" aria-label="Selected portfolio projects. Use the arrow keys or scroll horizontally to explore.">
+          <figure class="artwork">
+            <div class="art-label"><p class="art-category">Education technology</p><span class="art-number">01 / 03</span></div>
+            <div class="art-frame"><img class="marathon-image" src="assets/marathon-homepage.png" alt="Marathon student productivity app homepage, with a semester planning headline and product preview"><a class="image-link" href="https://marathonstudent.com" target="_blank" rel="noreferrer" aria-label="Visit Marathon student productivity app"></a><span class="art-overlay">Live project ↗</span></div>
+            <figcaption><h3 class="caption-title">Marathon</h3><p class="caption-copy">Founder & builder · A clearer way to plan the semester.</p></figcaption>
+          </figure>
+          <figure class="artwork">
+            <div class="art-label"><p class="art-category">Government & public service</p><span class="art-number">02 / 03</span></div>
+            <div class="art-frame"><div class="abstract-art gov-art" role="img" aria-label="Abstract editorial page representing public-sector communication"><div class="gov-paper"><div class="paper-top"><span>Public service</span><span>DC · 2025</span></div><div class="gov-rule"></div><h3>Clear words.<br>Public impact.</h3><div class="gov-lines"><i></i><i></i><i></i></div><span class="gov-stamp">POLICY<br>IN PRACTICE</span></div></div></div>
+            <figcaption><h3 class="caption-title">Government, made legible</h3><p class="caption-copy">Digital communications, research, and operations in public service.</p></figcaption>
+          </figure>
+          <figure class="artwork">
+            <div class="art-label"><p class="art-category">Defense & emerging technology</p><span class="art-number">03 / 03</span></div>
+            <div class="art-frame"><div class="abstract-art defense-art" role="img" aria-label="Abstract radar visualization representing national security research"><div class="defense-grid"></div><div class="radar"><div class="radar-sweep"></div><i class="radar-dot one"></i><i class="radar-dot two"></i><i class="radar-dot three"></i></div><span class="defense-label">Signals · Systems · Security</span></div></div>
+            <figcaption><h3 class="caption-title">Security in transition</h3><p class="caption-copy">AI infrastructure, energy, supply chains, and national security.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="page info" id="information" aria-labelledby="info-heading">
+      <aside class="info-aside"><h2 id="info-heading">Information</h2><p>Researcher and builder working across emerging technology, national security, and public policy. I like complex questions, clear writing, and making ideas useful.</p></aside>
+      <div class="info-content">
+        <section class="info-group" aria-labelledby="employment-heading"><h3 id="employment-heading">Employment</h3>
+          <article class="entry"><p class="entry-title">Middle East Institute</p><p class="entry-sub">Research Intern — AI, AI Infrastructure & AI Energy</p><p class="entry-date">2026 — Present</p></article>
+          <article class="entry"><p class="entry-title">National Design Studio</p><p class="entry-sub">Coordinator — Executive Office of the President</p><p class="entry-date">2026</p></article>
+          <article class="entry"><p class="entry-title">U.S. House of Representatives</p><p class="entry-sub">Communications Assistant</p><p class="entry-date">2025 — 2026</p></article>
+          <article class="entry"><p class="entry-title">Deloitte Government & Public Services</p><p class="entry-sub">Business Analyst — Supply Chain Risk & Resilience</p><p class="entry-date">2023 — 2025</p></article>
+        </section>
+        <section class="info-group" aria-labelledby="education-heading"><h3 id="education-heading">Education</h3>
+          <p class="education-line">Pepperdine University<span>M.A. Middle East Policy Studies · 2025 — Present</span></p>
+          <p class="education-line">Pepperdine University<span>B.A. Political Science & Economics, minor in Sociology · Magna cum laude · 2023</span></p>
+        </section>
+        <section class="info-group" aria-labelledby="writing-heading"><h3 id="writing-heading">Writing & recognition</h3>
+          <a class="writing-link" href="mailto:lee3claire@gmail.com?subject=AI%20and%20terrorist%20capabilities%20research">Artificial Intelligence and the Evolution of Terrorist Capabilities</a><p class="writing-note">Research on propaganda, recruitment, cyber operations, and asymmetric warfare · forthcoming, 2026</p>
+          <p class="entry-title" style="margin-top:20px">“Abroad in South Korea”</p><p class="entry-sub">Pepperdine Graphic Media · SPJ Mark of Excellence Award, Regional First Place & National Finalist</p><p class="entry-date">2020 — 2021</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="page contact" id="contact"><div><p class="contact-label">Further conversation</p><h2>Have a good question in mind?</h2></div><a class="contact-link" href="mailto:lee3claire@gmail.com">Get in touch <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="page footer"><span>© 2026 Claire Lee</span><a href="#top">Return to entrance ↑</a></footer>
+  <script>
+    (() => {
+      const track = document.querySelector('#gallery-track');
+      const step = () => Math.min(track.clientWidth * 0.78, 548);
+      document.querySelector('#prev').addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+      document.querySelector('#next').addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+      track.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+          event.preventDefault();
+          track.scrollBy({ left: event.key === 'ArrowRight' ? step() : -step(), behavior: 'smooth' });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
